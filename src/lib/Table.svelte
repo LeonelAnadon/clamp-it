@@ -14,23 +14,26 @@
         : unity === "rem"
         ? value * $defaultValues?.rem
         : unity === "vw"
-        ? value * ($defaultValues?.vw / 100)
+        ? value * ($defaultValues?.vw / 100) : unity === 'vh' ? value * ($defaultValues?.vh / 100)
         : unity === "pt"
         ? value * 1.33
         : 0;
     let rem = unity === "rem" ? value : 0;
     let vw = unity === "vw" ? value : 0;
+    let vh = unity === "vh" ? value : 0;
     let pt = unity === "pt" ? value : 0;
 
     rem = px / $defaultValues?.rem;
     vw = (10 * px) / ($defaultValues?.vw / 10);
+    vh = (10 * px) / ($defaultValues?.vh / 10);
     pt = px / 1.33;
 
     rem = Number(rem.toFixed(2));
     px = Number(px.toFixed(2));
     pt = Number(pt.toFixed(2));
     vw = Number(vw.toFixed(2));
-    return [{ px, pt, vw, rem }];
+    vh = Number(vh.toFixed(2));
+    return [{ px, pt, vw, vh, rem }];
   }
   $: if ($value && $currentUnity !== 'clamp') theValue = convert($value, $currentUnity);
 

@@ -79,6 +79,10 @@
         on:click={() => ($currentUnity = "vw")}>vw</button
       >
       <button
+      class:active={$currentUnity === "vh"}
+        on:click={() => ($currentUnity = "vh")}>vh</button
+      >
+      <button
         class:active={$currentUnity === "rem"}
         on:click={() => ($currentUnity = "rem")}>rem</button
       >
@@ -97,6 +101,7 @@
     <div class="hidden-config" style={`height: ${isConfig ? 3 : 0}rem;`}>
       <input type="number" disabled />
       <input type="number"   bind:value={$defaultValues["vw"]} />
+      <input type="number"   bind:value={$defaultValues["vh"]} />
       <input type="number"  bind:value={$defaultValues["rem"]} />
       <input type="number" disabled />
       <input type="number" disabled />
